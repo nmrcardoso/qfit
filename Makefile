@@ -1,5 +1,5 @@
 
-VERSION = v3
+VERSION = v1
 
 exe_name ?= qfit_$(VERSION)
 
