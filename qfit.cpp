@@ -938,7 +938,7 @@ class Program{
 		}
 	}
 
-	Program( int argc,  const char **argv, int x = 100, int y = 100, int w = 800, int h = 600, const char* name = "Constant Fit" ) : window( x, y, w, h, name  ){
+	Program( int argc,  const char **argv, int x = 100, int y = 100, int w = 800, int h = 600, const char* name = "qfit" ) : window( x, y, w, h, name  ){
 		// Defining input file reading parameters
 		// File input columns can be defined as:
 		// 1- r1 r2 t V(r1,r2,t) error  -> nc = 2
