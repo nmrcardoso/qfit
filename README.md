@@ -9,6 +9,7 @@ Needs:
 Compile:
 - make
 - or make static
+
 Run:
 - ./qfit_v1 input_file
 
