@@ -21,20 +21,12 @@
 #ifndef PLOT_QFIT_H
 #define PLOT_QFIT_H
 
-
-
-
-
-
 #include <FL/fl_draw.H>
 
 #include "structs.h"
 #include "ticks.h"
 
 using namespace std;
-
-
-
 
 class DrawErrorPlot : public DrawTicks{	
 	double min;
@@ -58,8 +50,6 @@ class DrawErrorPlot : public DrawTicks{
 	void draw(DataLine data, double t1, double t2);
 	
 };
-
-
 
 
 #endif
