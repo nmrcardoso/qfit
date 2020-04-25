@@ -259,6 +259,7 @@ GSLfitRes GSLfit1(DataLine data, bool print_info){
 
 
 
+
 GSLfitRes GSLfit(DataLine data, bool err_mean_main_fit){
 	qlog << "------------------- GSL Fit -------------------" << endl;
 	//Fit data
@@ -266,6 +267,7 @@ GSLfitRes GSLfit(DataLine data, bool err_mean_main_fit){
 
 	//Jackknife fit error
 	vector<GSLfitRes> err;
+	vector<double> r0_jack;
 	for( uint ii = 0; ii < data.size(); ++ii ) {
 		DataLine data1;
 		for( uint i = 0; i < data.size(); ++i ) {			
@@ -274,6 +276,8 @@ GSLfitRes GSLfit(DataLine data, bool err_mean_main_fit){
 		}
 		GSLfitRes res1 = GSLfit1(data1, false);
 		err.push_back(res1);
+		double r0 = std::sqrt( (1.65 + res1.val[1]) / res1.val[2] );
+		r0_jack.push_back(r0);
 		//qlog << ii << "\t" << res1.val[0] << "\t" << res1.val[1] << "\t" << res1.val[2] << endl;
 	}
 
@@ -298,10 +302,23 @@ GSLfitRes GSLfit(DataLine data, bool err_mean_main_fit){
 	}
 	//qlog << "qui: " << qui << endl;
 	res.chi2_dofJ = qui /(data.size() - 3);
+	
+	
+	double r0 = std::sqrt( (1.65 + res.val[1]) / res.val[2] );
+	double r0_error = jackerr(r0_jack);
+	qlog << "Using jackknife:" << endl;
+	qlog << "r0 = " << r0 << " ± " << r0_error << endl;
+	//qlog << "r0 = " << r0 << " ± " << jackerr(r0_jack, r0) << endl;
+	
+	double eb = res.errorJ[1] / (2.0 * res.val[2] * r0);
+	double ec = res.errorJ[2] * r0 / (2.0 * res.val[2]);
+	double roerr = std::sqrt( eb * eb + ec * ec);
+	qlog << "Using propagation error:" << endl;
+	qlog << "r0 = " << r0 << " ± " << roerr << endl;
+	
 
 	qlog << "-----------------------------------------------" << endl;
 	return res;
 }
-	
 
 
