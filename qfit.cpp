@@ -157,7 +157,12 @@ void MyGlWindow::createdraw() {
 			double y = res.val[0] + res.val[1] / i + res.val[2] * i; 
 			double yy = res.val[0] + res.val[1] / (i+stepxx) + res.val[2] * (i+stepxx); 
 			//fl_circle(w_x0+(i-xmin)*factorx, w_y1-(y-ymin)*factory, .4);
-			fl_line(w_x0+(i-xmin)*factorx, w_y1-(y-ymin)*factory, w_x0+(i+stepxx-xmin)*factorx, w_y1-(yy-ymin)*factory);
+			
+			int x0 = w_x0+(i-xmin)*factorx, x1 = w_x0+(i+stepxx-xmin)*factorx;
+			int y0 = w_y1-(y-ymin)*factory, y1 = w_y1-(yy-ymin)*factory;
+			
+			if( x0 > w_x0 && x1 < w_x1 && y0 > w_y0 && y1 < w_y1)
+				fl_line(x0, y0, x1, y1);
 		}
 		fl_font(FL_BOLD, 16);
 		string beg[3] = {"A = ", "B = ", "C = "};
