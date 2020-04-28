@@ -13,6 +13,6 @@ Compile:
 Run:
 - ./qfit_v1 input_file
 
-using the example in test directory: ./qfit_v1 wilsonloop.qfit
+using the example in test directory: ./qfit_v1 test/wilsonloop.qfit
 
 ![qfit screenshot](https://github.com/nmrcardoso/qfit/blob/master/qfit.png)
