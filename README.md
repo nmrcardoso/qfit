@@ -1,5 +1,5 @@
 # qfit
-A simple program to fit the effect mass plots in Lattice QCD
+A simple program to fit effective mass plots in Lattice QCD
 
 Needs:
 - FLTK lib https://www.fltk.org/  (gui interface)
