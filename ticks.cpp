@@ -271,7 +271,7 @@ void Ticks::CalculateTicks(){
 	int step11 = round(step1);
 	for(int i=0; i < NumTicksLvl1; ++i){
 		TicksValuesLvl1[i] = funcMin + i*step1;
-		TicksPosLvl1[i] = round(r*(TicksValuesLvl1[i]-fmin));
+		TicksPosLvl1[i] = r*(TicksValuesLvl1[i]-fmin);
 	}	
 	// Level 2 tick marks.
 	if (fNDivLvl2) {
