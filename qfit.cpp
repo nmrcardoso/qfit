@@ -148,7 +148,7 @@ void MyGlWindow::createdraw() {
 			if ( data[i].x >= rangeVr.t1 && data[i].x <= rangeVr.t2 )
 				data1.push_back(data[i]);
 		}
-		res = GSLfit(data1);
+		res = GSLfit(data1, true);
 
 		fl_line_style(0,2);
 		fl_color(FL_RED);
