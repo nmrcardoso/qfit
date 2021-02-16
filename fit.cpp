@@ -288,7 +288,7 @@ GSLfitRes GSLfit(DataLine data, bool err_mean_main_fit){
 		for(int j = 0; j < err.size(); ++j)
 			vals.push_back(err[j].val[i]);
 		if( err_mean_main_fit ) res.errorJ[i] = jackerr(vals, res.val[i]);
-		res.errorJ[i] = jackerr(vals);
+		else res.errorJ[i] = jackerr(vals);
 		//qlog << jackerr(vals) << "::" << jackerr(vals, res.val[i]) << endl;
 	}
 	
@@ -305,7 +305,9 @@ GSLfitRes GSLfit(DataLine data, bool err_mean_main_fit){
 	
 	
 	double r0 = std::sqrt( (1.65 + res.val[1]) / res.val[2] );
-	double r0_error = jackerr(r0_jack);
+	double r0_error = 0.0;
+	if( err_mean_main_fit ) r0_error = jackerr(r0_jack, r0);
+	else r0_error = jackerr(r0_jack)
 	qlog << "Using jackknife:" << endl;
 	qlog << "r0 = " << r0 << " ± " << r0_error << endl;
 	//qlog << "r0 = " << r0 << " ± " << jackerr(r0_jack, r0) << endl;
