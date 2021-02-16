@@ -307,7 +307,7 @@ GSLfitRes GSLfit(DataLine data, bool err_mean_main_fit){
 	double r0 = std::sqrt( (1.65 + res.val[1]) / res.val[2] );
 	double r0_error = 0.0;
 	if( err_mean_main_fit ) r0_error = jackerr(r0_jack, r0);
-	else r0_error = jackerr(r0_jack)
+	else r0_error = jackerr(r0_jack);
 	qlog << "Using jackknife:" << endl;
 	qlog << "r0 = " << r0 << " ± " << r0_error << endl;
 	//qlog << "r0 = " << r0 << " ± " << jackerr(r0_jack, r0) << endl;
