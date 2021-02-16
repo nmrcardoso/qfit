@@ -613,8 +613,8 @@ class Program{
 				s2 += pow( (p.y - fit.mean) / p.error, 2 );
 			}
 		}
-		fit.error = jackerr(trials);
-		//fit.error = jackerr(trials, fit.mean);
+		//fit.error = jackerr(trials);
+		fit.error = jackerr(trials, fit.mean);
 		fit.chi2dof = s2 / (num - 1);
 		return fit;
 	}
